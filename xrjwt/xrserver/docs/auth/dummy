@@ -1,0 +1,5 @@
+parameters:
+  - name: header
+    description: The body should contain the user login credentials
+    in: body
+    required: true

@@ -1,0 +1,53 @@
+User log in
+---
+tags:
+  - Authentication
+parameters:
+  - name: header
+    description: The body should contain the user login credentials
+    in: body
+    required: true
+    schema:
+      in : path
+      type: object
+      required:
+        - "email"
+        - "password"
+      properties:
+        email:
+          type: "email"
+          example: "user@gmail.com"
+        password:
+          type: "string"
+          format: passsponse content tword
+          example: "********"
+
+responses:
+  200:
+    description: When a user successfully logs in
+
+  400:
+    description: Fails to login due to bad request data
+
+  401:
+    description: A user supplies incorrect credentials
+
+
+
+#/survey:
+#    post:
+#      summary: A sample survey.
+#      consumes:
+#        - application/x-www-form-urlencoded
+#      parameters:
+#        - in: header
+#          name: name
+#          type: string
+#          description: A person's name.
+#        - in: header
+#          name: fav_number
+#          type: number
+#          description: A person's favorite number.
+#      responses:
+#        200:
+#          description: OK
