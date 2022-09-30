@@ -1,0 +1,11 @@
+Redirect to a short url
+---
+tags:
+  - Event
+
+responses:
+  302:
+    description: Redirects to the original link
+
+  404:
+    description: Record was not found

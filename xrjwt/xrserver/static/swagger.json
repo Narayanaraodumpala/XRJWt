@@ -1,0 +1,3931 @@
+{
+	
+	"openapi": "3.0.0",
+	"info": {
+		"description": "xr connect and aviation documentaion",
+		"version": "1.0.0",
+		"title": "XR Connect API"
+	},
+	"tags": [
+		{
+			"name": "XR Connect API",
+			"description": "Note :- For authorised APIs, replace 'JWT Authorization header using the Bearer scheme' with the user's jwt token.After successfully logging in, you will be able to obtain your JWT token. "
+			 
+		}
+	],
+
+	"servers": [
+		{
+			"url": "/"
+		}
+	],	
+	"components": {
+		"schemas": {
+            "AppList":{
+
+            },
+            "GetUserList":{
+                "type": "object",
+				"properties": {
+					"email": {
+						"type": "string"
+					}
+                }
+            },
+			"Login": {
+				"type": "object",
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				}
+			},
+			"contentInvite": {
+				"type": "object",
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"contentId": {
+						"type": "string"
+					}
+				}
+			},
+			"inviteEmail": {
+				"type": "object",
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"eventID": {
+						"type": "string"
+					}
+				}
+			},
+            "Signup": {
+				"type": "object",
+				"properties": {
+					"UserName": {
+						"type": "string"
+
+					},
+					"email": {
+						"type": "string"
+					},
+                    "Gender": {
+						"type": "string",
+                        "enum":["Male","Female","Others"]
+					},
+                    "companyName":{
+                        "type": "string",
+                        "enum":["XRCONNECT"]
+                    },
+                    "Role":{
+                        "type": "string",
+                        "enum":["User"]
+                    },
+                    "password": {
+						"type": "string"
+					},
+                    "confirmPassword": {
+						"type": "string"
+					}
+				}
+			},
+			  "addUser": {
+				"type": "object",
+				"properties": {
+					"FirstName": {
+						"type": "string"
+					},
+					"LastName": {
+						"type": "string"
+					},
+                    "Gender": {
+						"type": "string",
+                        "enum":["Male","Female","Others"]
+					},
+                    "Role":{
+                        "type": "string",
+                        "enum":["User"]
+                    },
+                    "companyName":{
+                        "type": "string",
+                        "enum":["XRCONNECT"]
+                    },
+                    "email": {
+						"type": "string"
+					},
+                    "PhoneNumber": {
+						"type": "string"
+					},
+					 "UserName": {
+						"type": "string"
+					}
+				}
+			},
+			 "addaviation": {
+				"type": "object",
+				"properties": {
+					"session_id": {
+						"type": "string"
+					},
+					"user_id": {
+						"type": "string"
+					},
+                    "start_time": {
+						"type": "string"
+
+					},
+					"user_name": {
+						"type": "string"
+
+					}
+
+				}
+			},
+			  "addCompany": {
+				"type": "object",
+				"properties": {
+					"companyid": {
+						"type": "string"
+					},
+					"company_name": {
+						"type": "string"
+					},
+                    "ceo_name": {
+						"type": "string"
+
+					},
+                    "email":{
+                        "type": "string"
+
+                    },
+                    "number":{
+                        "type": "string"
+
+                    },
+                    "website": {
+						"type": "string"
+					},
+                    "address": {
+						"type": "string"
+					},
+					 "status": {
+						"type": "string"
+					},
+					"created_by": {
+						"type": "string"
+					},
+					"no_of_license": {
+						"type": "string"
+					},
+					"license_key": {
+						"type": "string"
+					}
+				}
+			},
+			 "add": {
+				"type": "object",
+				"properties": {
+					"FileName": {
+						"type": "string"
+					},
+					"Version": {
+						"type": "string"
+					},
+                    "ContentID": {
+						"type": "string"
+
+					},
+                    "ContentType":{
+                        "type": "string",
+                      "enum":["High","Low"]
+
+
+
+
+                    },
+                    "ContentLoadType":{
+                        "type": "string"
+
+
+                    },
+                    "Description": {
+						"type": "string"
+					},
+                    "Owner": {
+						"type": "string"
+					},
+					 "AccessType": {
+						"type": "string",
+                       "enum":["Public","Private"]
+					},
+					"PermittedUsers": {
+						"type": "string"
+					},
+					"BuildTarget": {
+						"type": "string",
+                      "enum":["Android","WSA","Windows","WebGL","ARKit","IOS","ARCore"]
+					},
+                    "BuildVersion": {
+						"type": "string"
+					},
+					 "PolyVersion": {
+						"type": "string"
+
+					},
+					"ContentName": {
+						"type": "string",
+                      "enum":["Ambience"]
+					},
+					"file": {
+						"type": "file"
+					}
+				}
+			},
+			"addEvent": {
+				"type": "object",
+				"properties": {
+					"EventID": {
+						"type": "string"
+					},
+					"EventName": {
+						"type": "string"
+					},
+                  "AccessType": {
+						"type": "string",
+					   "enum":["Public","Private"]
+
+					},
+                    "HostUserEmail": {
+						"type": "string"
+
+					},
+                    "Description":{
+                        "type": "string"
+
+                    },
+                    "StartDate":{
+                        "type": "string"
+
+                    },
+                    "EndDate": {
+						"type": "string"
+					},
+                    "EnvironmentID": {
+						"type": "string"
+					},
+					 "ApplicationID": {
+						"type": "string"
+					},
+					"ToolsID": {
+						"type": "string"
+					},
+					"content": {
+						"type": "string"
+					}
+				}
+			},
+			 "addAddressableInternal": {
+				"type": "object",
+				"properties": {
+
+					"ContentID": {
+						"type": "string"
+					},
+                    "ContentName": {
+						"type": "string"
+
+					},
+                    "ContentType":{
+                        "type": "string",
+						"enum":["Application"]
+                    },
+                    "Description":{
+                        "type": "string"
+
+                    },
+					"Owner":{
+                        "type": "string"
+
+                    },
+                    "AccessType": {
+						"type": "string",
+						"enum":["Public","Private"]
+					},
+                    "Version": {
+						"type": "string"
+					},
+					 "Platform": {
+						"type": "string",
+						  "enum":["Android","WSA","Windows","WebGL","ARKit","IOS","ARCore"]
+					},
+					"BuildVersion": {
+						"type": "string"
+					},
+					"PolyVersion": {
+						"type": "string",
+						 "enum":["High","Low"]
+
+
+					},
+                    "uploadedBy": {
+						"type": "string"
+					},
+					 "file": {
+						"type": "string"
+
+					}
+
+				}
+			},
+			 "addMediaAzure": {
+				"type": "object",
+				"properties": {
+
+					"FileURL": {
+						"type": "string"
+					},
+                    "FileName": {
+						"type": "string"
+
+					},
+                    "MediaType":{
+                        "type": "string"
+
+                    },
+                    "CompanyName":{
+                        "type": "string"
+
+                    },
+                    "UploadedBy": {
+						"type": "string"
+					},
+                    "AccessType": {
+						"type": "string",
+						"enum":["Public","Private"]
+
+
+					}
+				}
+			},
+			"updateCompany": {
+				"type": "object",
+				"properties": {
+					"companyid": {
+						"type": "string"
+					},
+					"company_name": {
+						"type": "string"
+					},
+                    "ceo_name": {
+						"type": "string"
+
+					},
+                    "email":{
+                        "type": "string"
+
+                    },
+                    "number":{
+                        "type": "string"
+
+                    },
+                    "website": {
+						"type": "string"
+					},
+                    "address": {
+						"type": "string"
+					},
+					 "status": {
+						"type": "string"
+					}
+
+				}
+			},
+			"getCompanyBasedList": {
+				"type": "object",
+				"properties": {
+					"companyid": {
+						"type": "string"
+					}
+
+				}
+			},
+			"deletesession": {
+				"type": "object",
+				"properties": {
+					"SessionID": {
+						"type": "string"
+					}
+
+				}
+			},
+				"getPrivateMediaList": {
+				"type": "object",
+				"properties": {
+					"email": {
+						"type": "string"
+					}
+
+				}
+			},
+			"getMediaList": {
+				"type": "object",
+				"properties": {
+					"MediaType": {
+						"type": "string"
+					}
+
+				}
+			},
+			  "userUpdate": {
+				"type": "object",
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"FirstName": {
+						"type": "string"
+					},
+                    "LastName": {
+						"type": "string"
+
+					},
+                    "PhoneNumber":{
+                        "type": "string"
+
+                    },
+                    "UserName":{
+                        "type": "string"
+
+                    },
+                    "Gender": {
+						"type": "string",
+						   "enum":["Male","Female","Others"]
+					},
+                    "Role": {
+						"type": "string",
+						  "enum":["User"]
+					}
+				}
+			},
+			 "updateEvent": {
+				"type": "object",
+				"properties": {
+					"EventID": {
+						"type": "string"
+					},
+					"AmbienceID": {
+						"type": "string"
+					}
+
+				}
+			},
+			"getContentData": {
+				"type": "object",
+				"properties": {
+					"ContentID": {
+						"type": "string"
+					},
+					"BuildTarget": {
+						"type": "string",
+						 "enum":["Android","WSA","Windows","WebGL","ARKit","IOS","ARCore"]
+					}
+
+				}
+			},
+
+				"getCatalogFiles": {
+				"type": "object",
+				"properties": {
+					"ContentID": {
+						"type": "string"
+					},
+					"BuildTarget": {
+						"type": "string",
+						 "enum":["Android","WSA","Windows","WebGL","ARKit","IOS","ARCore"]
+					}
+
+				}
+			},
+
+				"editEventname": {
+				"type": "object",
+				"properties": {
+					"EventID": {
+						"type": "string"
+					},
+					"EventName": {
+						"type": "string"
+					}
+
+				}
+			},
+
+			"getContentFile": {
+				"type": "object",
+				"properties": {
+					"ContentID": {
+						"type": "string"
+					},
+					"BuildTarget": {
+						"type": "string",
+						"enum":["Android","WSA","Windows","WebGL","ARKit","IOS","ARCore"]
+					},
+					"BuildVersion": {
+						"type": "string"
+					},
+					"PolyVersion": {
+						"type": "string"
+					}
+
+				}
+			},
+			"addpermittedusers": {
+				"type": "object",
+				"properties": {
+					"EventID": {
+						"type": "string"
+					},
+					"ContentID": {
+						"type": "string"
+					},
+					"media_id": {
+						"type": "string"
+					},
+					"user_email": {
+						"type": "string"
+					}
+
+
+				}
+			},
+			"addsessionmedia": {
+				"type": "object",
+				"properties": {
+					"EventID": {
+						"type": "string"
+					},
+					"MediaType": {
+						"type": "string"
+					},
+					"MediaID": {
+						"type": "string"
+					},
+					"MediaPath": {
+						"type": "string"
+					}
+
+
+				}
+			},
+				"addusercontents": {
+				"type": "object",
+				"properties": {
+					"ContentName": {
+						"type": "string"
+					},
+					"ContentType": {
+						"type": "string",
+						"enum":["Ambience"]
+					},
+					"Version": {
+						"type": "string"
+					},
+					"BuildTarget": {
+						"type": "string",
+						"enum":["Android","WSA","Windows","WebGL","ARKit","IOS","ARCore"]
+
+					},
+					"BuildVersion": {
+						"type": "string"
+					},
+					"PolyVersion": {
+						"type": "string",
+						"enum":["High","Low"]
+					},
+					"assetFileUrl": {
+						"type": "string"
+					},
+					"shaderFileUrl": {
+						"type": "string"
+					},
+					"hashFileUrl": {
+						"type": "string"
+					},
+					"jsonFileUrl": {
+						"type": "string"
+					},
+					"Description": {
+						"type": "string"
+					},
+					"Owner": {
+						"type": "string"
+					},
+					"AccessType": {
+						"type": "string",
+						 "enum":["Public","Private"]
+					},
+					"uploadedBy": {
+						"type": "string"
+					},
+					"assetFileName": {
+						"type": "string"
+					},
+					"shaderFileName": {
+						"type": "string"
+					},
+					"hashFileName": {
+						"type": "string"
+					},
+					"jsonFileName": {
+						"type": "string"
+					}
+
+
+
+				}
+			},
+			"addAddressableAzure": {
+				"type": "object",
+				"properties": {
+					"ContentName": {
+						"type": "string"
+					},
+					"ContentType": {
+						"type": "string",
+						"enum":["Application"]
+					},
+					"Version": {
+						"type": "string"
+					},
+					"BuildTarget": {
+						"type": "string",
+							"enum":["Android","WSA","Windows","WebGL","ARKit","IOS","ARCore"]
+					},
+					"BuildVersion": {
+						"type": "string"
+					},
+					"PolyVersion": {
+						"type": "string",
+						"enum":["HIGH","LOW"]
+					},
+					"assetFileUrl": {
+						"type": "string"
+					},
+					"shaderFileUrl": {
+						"type": "string"
+					},
+					"hashFileUrl": {
+						"type": "string"
+					},
+					"jsonFileUrl": {
+						"type": "string"
+					},
+					"Description": {
+						"type": "string"
+					},
+					"Owner": {
+						"type": "string"
+					},
+					"AccessType": {
+						"type": "string",
+						"enum":["Public","Private"]
+					},
+					"uploadedBy": {
+						"type": "string"
+					},
+					"assetFileName": {
+						"type": "string"
+					},
+					"shaderFileName": {
+						"type": "string"
+					},
+					"hashFileName": {
+						"type": "string"
+					},
+					"jsonFileName": {
+						"type": "string"
+					}
+
+
+
+				}
+			},
+			"addavatar": {
+				"type": "object",
+				"properties": {
+					"ModelFile": {
+						"type": "string"
+					},
+					"UserID": {
+						"type": "string"
+					}
+
+				}
+			},
+			"getavatar": {
+				"type": "object",
+				"properties": {
+
+					"UserID": {
+						"type": "string"
+					}
+
+				}
+			},
+			"checkpassword": {
+				"type": "object",
+				"properties": {
+
+					
+
+				}
+			},
+			"verifypassword": {
+				"type": "object",
+				"properties": {
+
+				
+				}
+			},
+			"getFile": {
+				"type": "object",
+				"properties": {
+
+					"ContentID": {
+						"type": "string"
+					},
+					"FileName": {
+						"type": "string"
+					},
+					"PolyVersion": {
+						"type": "string",
+						"enum":["HIGH","LOW"]
+					},
+					"BuildTarget": {
+						"type": "string",
+						"enum":["Android","WSA","Windows","WebGL","ARKit","IOS","ARCore"]
+
+					},
+					"BuildVersion": {
+						"type": "string"
+					}
+
+				}
+			},
+			"addsessions": {
+				"type": "object",
+				"properties": {
+					"EventID": {
+						"type": "string"
+					},
+					"EventName": {
+						"type": "string"
+					},
+					"EventType": {
+						"type": "string"
+					},
+					"ParentEventName": {
+						"type": "string"
+					},
+					"SessionStatus": {
+						"type": "string"
+					},
+					"AccessType": {
+						"type": "string",
+						"enum": ["Public","Private"]
+					},
+					"MaxUsers": {
+						"type": "string"
+					},
+					"HostUserEmail": {
+						"type": "string"
+					},
+					"Description": {
+						"type": "string"
+					},
+					"Category": {
+						"type": "string"
+					},
+					"EnvironmentID": {
+						"type": "string"
+					},
+					"StartDate": {
+						"type": "string"
+					},
+					"EndDate": {
+						"type": "string"
+					},
+					"content":{"type":"string"}
+
+
+				}
+			},
+			"addEventsessions": {
+				"type": "object",
+				"properties": {
+					"EventID": {
+						"type": "string"
+					},
+					"EventName": {
+						"type": "string"
+					},
+
+					"AccessType": {
+						"type": "string",
+						"enum": ["Public","Private"]
+
+					},
+
+					"HostUserEmail": {
+						"type": "string"
+					},
+					"Description": {
+						"type": "string"
+					},
+
+					"EnvironmentID": {
+						"type": "string"
+					},
+					"StartDate": {
+						"type": "string"
+					},
+					"EndDate": {
+						"type": "string"
+					}
+
+
+				}
+			},
+			"update_session_user": {
+				"type": "object",
+				"properties": {
+					"SessionID": {
+						"type": "string"
+					},
+					"UserID": {
+						"type": "string"
+					},
+
+					"UserRole": {
+						"type": "string"
+					},
+
+					"UserAvatar": {
+						"type": "string"
+					},
+					"IsFavourite": {
+						"type": "string"
+					}
+
+
+				}
+			},
+			"device_login": {
+				"type": "object",
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+
+					"system_id": {
+						"type": "string"
+					}
+
+
+
+				}
+			},
+			"addsession_users": {
+				"type": "object",
+				"properties": {
+					"SessionID": {
+						"type": "string"
+					},
+					"UserID": {
+						"type": "string"
+					},
+					"eventid": {
+						"type": "string"
+					},
+
+					"UserRole": {
+						"type": "string"
+					},
+
+					"UserAvatar": {
+						"type": "string"
+					},
+					"IsFavourite": {
+						"type": "string"
+					}
+
+				}
+			},
+			"getsession_users": {
+				"type": "object",
+				"properties": {
+					"SessionID": {
+						"type": "string"
+					}
+
+				}
+			},
+			"getUserSessions": {
+				"type": "object",
+				"properties": {
+					"UserID": {
+						"type": "string"
+					}
+
+				}
+			},
+			"getsessionmedia": {
+				"type": "object",
+				"properties": {
+					"EventID": {
+						"type": "string"
+					}
+
+
+
+				}
+			},
+			"getsession": {
+				"type": "object",
+				"properties": {
+					"SessionID": {
+						"type": "string"
+					}
+
+
+
+				}
+			},
+			"getpermittedusers": {
+				"type": "object",
+				"properties": {
+					"EventID": {
+						"type": "string"
+					}
+
+				}
+			},
+
+
+
+			"getUsersList":{
+				"type" : "object",
+				"properties" : {
+					"email" : {
+						"type" : "string"
+					}
+				}
+			},
+
+			"getEventList":{
+				"type" : "object",
+				"properties" : {
+					"email" : {
+						"type" : "string"
+					}
+				}
+			},
+
+			"getEvent":{
+				"type" : "object",
+				"properties" : {
+					"eventid" : {
+						"type" : "string"
+					}
+				}
+			},
+
+			"getCompanyDetails":{
+				"type" : "object",
+				"properties" : {
+					"companyid" : {
+						"type" : "string"
+					}
+				}
+			},
+
+
+            "getSessionList":{
+				"type" : "object",
+				"properties" : {
+					"user_id" : {
+						"type" : "string"
+					}
+				}
+			},
+			"getCompanyList":{
+				"type" : "object",
+				"properties" : {
+
+				}
+			},
+			"getActList":{
+				"type" : "object",
+				"properties" : {
+
+				}
+			},
+				"getsessionActList":{
+				"type" : "object",
+				"properties" : {
+
+				}
+			},
+				"getuserpaginationlist":{
+				"type" : "object",
+				"properties" : {
+
+				}
+			},
+			"getEnvList":{
+				"type" : "object",
+				"properties" : {
+
+				}
+			},
+			"getToolsList":{
+				"type" : "object",
+				"properties" : {
+
+				}
+			},
+			"getEnvpaginationlist":{
+				"type" : "object",
+				"properties" : {
+					
+				}
+			},
+			
+			"getApppaginationlist":{
+				"type" : "object",
+				"properties" : {
+
+				}
+			},
+
+			"getCatalogList":{
+				"type" : "object",
+				"properties" : {
+
+				}
+			},
+			"getCompanyUsersList":{
+				 "type": "object",
+				 "properties": {
+					"company_name": {
+						"type": "string"
+					}
+                }
+			},
+
+
+			"deleteCompany":{
+				 "type": "object",
+				 "properties": {
+					"companyid": {
+						"type": "string"
+					}
+                }
+			},
+			
+
+			"deleteContentFile":{
+				 "type": "object",
+				 "properties": {
+					"mediaID": {
+						"type": "string"
+					}
+                }
+			},
+			"refresh_token":{
+				"type": "object",
+				"properties": {
+				   "identity": {
+					   "type": "string"
+				   }
+			   }
+		   },
+			"resetPassword":{
+				 "type": "object",
+				 "properties": {
+					"email": {
+						"type": "string"
+					}
+                }
+			},
+			"addOculus":{
+				 "type": "object",
+				 "properties": {
+					"oculus_id": {
+						"type": "string"
+					}
+                }
+			},
+			"generatevrcode":{
+				 "type": "object",
+				 "properties": {
+					"email": {
+						"type": "string"
+					}
+                }
+			},
+			"getMediaPaginationList":{
+				 "type": "object",
+				 "properties": {
+					"MediaType": {
+						"type": "string"
+					}
+                }
+			},
+			"getSearchedMediaList":{
+				 "type": "object",
+				 "properties": {
+					"media_id": {
+						"type": "string"
+					}
+                }
+			},
+			"deleteUser":{
+				 "type": "object",
+				 "properties": {
+					"email": {
+						"type": "string"
+					}
+                }
+			},
+			"delete":{
+				 "type": "object",
+				 "properties": {
+					"eventid": {
+						"type": "string"
+					}
+                }
+			},
+				"vrlogin":{
+				 "type": "object",
+				 "properties": {
+					"vrcode": {
+						"type": "string"
+					}
+                }
+			},
+			"updatePassword":{
+				 "type": "object",
+				 "properties": {
+					"email": {
+						"type": "string"
+					},
+					 "password": {
+						"type": "string"
+					}
+                }
+			},
+			"getusercontents":{
+				 "type": "object",
+				 "properties": {
+					"ContentID": {
+						"type": "string"
+					},
+					 "BuildTarget": {
+						"type": "string",
+						 "enum":["Android","WSA","Windows","WebGL","ARKit","IOS","ARCore"]
+
+					}
+                }
+			},
+			"SessionsList":{
+				 "type": "object",
+				 "properties": {
+
+                }
+			},
+
+
+			"changePassword":{
+				 "type": "object",
+				 "properties": {
+					"email": {
+						"type": "string"
+					},
+					 "password": {
+						"type": "string"
+					},
+					 "newpassword": {
+						"type": "string"
+					}
+                }
+			},
+			
+			"getPrivateSessionList":{
+				 "type": "object",
+				 "properties": {
+					"email": {
+						"type": "string"
+					}
+                }
+			
+			}
+
+		},
+		"securitySchemes": {
+			"bearerAuth": {
+			  "type": "http",
+			  "description": "JWT Authorization header using the Bearer scheme.",
+			  "scheme": "bearer",
+			  "bearerFormat": "JWT"
+			}
+		  }
+		
+	},
+	
+	"paths": {
+		"/auth/login": {
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "Login User",
+				"requestBody": {
+					"description": "Login User API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/Login"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/Login"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/Login"
+						}
+					}
+				}
+			}
+			
+		},
+		
+		"/auth/refresh_token": {
+			"get": {
+				"tags": [
+					"auth"
+				],
+				"summary": " refresh token",
+				"requestBody": {
+					"description": "add session api",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/refresh_token"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/refresh_token"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/refresh_token"
+						}
+					}
+				}
+			}
+		},
+		"/aviation/add": {
+			"post": {
+				"tags": [
+					"Aviation"
+				],
+				"summary": " add session",
+				"requestBody": {
+					"description": "add session api",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addaviation"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addaviation"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addaviation"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/aviation/getSessionList": {
+			"post": {
+				"tags": [
+					"Aviation"
+				],
+				"summary": " get session",
+				"requestBody": {
+					"description": "get session api",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getSessionList"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getSessionList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getSessionList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/session_users/add": {
+			"post": {
+				"tags": [
+					"Session Users"
+				],
+				"summary": " add session_users ",
+				"requestBody": {
+					"description": "session_users API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addsession_users"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addsession_users"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addsession_users"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+				
+			}
+		},
+		"/session_users/getUserSessions": {
+			"post": {
+				"tags": [
+					"Session Users"
+				],
+				"summary": " getUserSessions ",
+				"requestBody": {
+					"description": "getUserSessions API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getUserSessions"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getUserSessions"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getUserSessions"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/usercontents/add": {
+			"post": {
+				"tags": [
+					"User Contents"
+				],
+				"summary": " addusercontents ",
+				"requestBody": {
+					"description": "addusercontents API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addusercontents"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addusercontents"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addusercontents"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/usercontents/addAddressableAzure": {
+			"post": {
+				"tags": [
+					"User Contents"
+				],
+				"summary": " addAddressableAzure ",
+				"requestBody": {
+					"description": "addAddressableAzure API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addAddressableAzure"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addAddressableAzure"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addAddressableAzure"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/usercontents/getFile": {
+			"post": {
+				"tags": [
+					"User Contents"
+				],
+				"summary": " getFile ",
+				"requestBody": {
+					"description": "getFile API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getFile"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getFile"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getFile"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/usercontents/get": {
+			"post": {
+				"tags": [
+					"User Contents"
+				],
+				"summary": " getusercontents ",
+				"requestBody": {
+					"description": "getusercontents API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getusercontents"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getusercontents"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getusercontents"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/session_users/update": {
+			"post": {
+				"tags": [
+					"Session Users"
+				],
+				"summary": " update session user ",
+				"requestBody": {
+					"description": "update_session_user API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/update_session_user"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/update_session_user"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/update_session_user"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/session_users/get": {
+			"post": {
+				"tags": [
+					"Session Users"
+				],
+				"summary": "getsession_users ",
+				"requestBody": {
+					"description": "getsession_users API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getsession_users"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getsession_users"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getsession_users"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+	"/event/getEventList": {
+			"post": {
+				"tags": [
+					"Events"
+				],
+				"summary": "getEventList ",
+				"requestBody": {
+					"description": "getEventList API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getEventList"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getEventList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getEventList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/sessions/add": {
+			"post": {
+				"tags": [
+					"Sessions"
+				],
+				"summary": "add session ",
+				"requestBody": {
+					"description": "addsessions API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addsessions"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addsessions"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addsessions"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/sessions/getPrivateSessionList": {
+			"post": {
+				"tags": [
+					"Sessions"
+				],
+				"summary": "getPrivateSessionList ",
+				"requestBody": {
+					"description": "getPrivateSessionList API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getPrivateSessionList"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getPrivateSessionList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getPrivateSessionList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/sessions/editEventname": {
+			"put": {
+				"tags": [
+					"Sessions"
+				],
+				"summary": "editEventname ",
+				"requestBody": {
+					"description": "editEventname API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/editEventname"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/editEventname"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/editEventname"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/sessions/get": {
+			"post": {
+				"tags": [
+					"Sessions"
+				],
+				"summary": "get session ",
+				"requestBody": {
+					"description": "addsessions API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getsession"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getsession"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getsession"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/sessions/addEvent": {
+			"post": {
+				"tags": [
+					"Sessions"
+				],
+				"summary": " addEvent ",
+				"requestBody": {
+					"description": "addEvent API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addEventsessions"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addEventsessions"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addEventsessions"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/permittedusers/add": {
+			"post": {
+				"tags": [
+					"Permitted Users"
+				],
+				"summary": "permittedusers ",
+				"requestBody": {
+					"description": "permittedusers API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addpermittedusers"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addpermittedusers"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addpermittedusers"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+			"/permittedusers/get": {
+			"post": {
+				"tags": [
+					"Permitted Users"
+				],
+				"summary": "permittedusers ",
+				"requestBody": {
+					"description": "permittedusers API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getpermittedusers"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getpermittedusers"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getpermittedusers"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+
+			}
+		},
+		"/media/getMediaList": {
+			"post": {
+				"tags": [
+					"Media"
+				],
+				"summary": "getMediaList ",
+				"requestBody": {
+					"description": "getMediaList API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getMediaList"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getMediaList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getMediaList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/media/getMediaPaginationList": {
+			"post": {
+				"tags": [
+					"Media"
+				],
+				"summary": "getMediaPaginationList ",
+				"requestBody": {
+					"description": "getMediaPaginationList API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getMediaPaginationList"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getMediaPaginationList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getMediaPaginationList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/oculus/addOculus": {
+			"post": {
+				"tags": [
+					"Oculus"
+				],
+				"summary": "addOculus ",
+				"requestBody": {
+					"description": "addOculus API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addOculus"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addOculus"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addOculus"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+				"/event/getEvent": {
+			"post": {
+				"tags": [
+					"Events"
+				],
+				"summary": "getEvent ",
+				"requestBody": {
+					"description": "getEvent API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getEvent"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getEvent"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getEvent"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+
+				"/avatars/add": {
+			"post": {
+				"tags": [
+					"User Avatar"
+				],
+				"summary": " addavatar",
+				"requestBody": {
+					"description": "addavatar API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addavatar"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addavatar"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addavatar"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+
+				"/avatars/get": {
+			"post": {
+				"tags": [
+					"User Avatar"
+				],
+				"summary": " get avatar",
+				"requestBody": {
+					"description": "get avatar API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getavatar"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getavatar"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getavatar"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/media/getSearchedMediaList": {
+			"post": {
+				"tags": [
+					"Media"
+				],
+				"summary": "getSearchedMediaList ",
+				"requestBody": {
+					"description": "getSearchedMediaList API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getSearchedMediaList"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getSearchedMediaList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getSearchedMediaList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/sessions/delete": {
+			"post": {
+				"tags": [
+					"Sessions"
+				],
+				"summary": "delete ",
+				"requestBody": {
+					"description": "deletesession API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/deletesession"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/deletesession"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/deletesession"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/sessionmedia/get": {
+			"post": {
+				"tags": [
+					"Session Media"
+				],
+				"summary": "getsessionmedia ",
+				"requestBody": {
+					"description": "getsessionmedia API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getsessionmedia"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getsessionmedia"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getsessionmedia"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+
+
+        "/contents/getAppList": {
+            "get" :{
+				"tags": [
+					"Contents"
+				],
+				"summary": "Get App List",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/AppList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/AppList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		"/aviation/SessionsList": {
+            "get" :{
+				"tags": [
+					"Aviation"
+				],
+				"summary": "Get All Sessions List",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/SessionsList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/SessionsList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+
+
+		 "/sessions/getActList": {
+            "get" :{
+				"tags": [
+					"Sessions"
+				],
+				"summary": "getActList",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getsessionActList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getsessionActList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		 "/event/getActList": {
+            "get" :{
+				"tags": [
+					"Events"
+				],
+				"summary": "getActList",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getActList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getActList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+
+		 "/contents/getEnvList": {
+            "get" :{
+				"tags": [
+					"Contents"
+				],
+				"summary": "Get Env List",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getEnvList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getEnvList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		 "/contents/getApppaginationlist": {
+            "get" :{
+				"tags": [
+					"Contents"
+				],
+				"summary": "getApppaginationlist",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getApppaginationlist"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getApppaginationlist"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		"/contents/getCatalogList": {
+            "get" :{
+				"tags": [
+					"Contents"
+				],
+				"summary": "getCatalogList",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getCatalogList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getCatalogList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+
+		 "/contents/getEnvpaginationlist": {
+            "get" :{
+				"tags": [
+					"Contents"
+				],
+				"summary": "getEnvpaginationlist",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getEnvpaginationlist"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getEnvpaginationlist"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+ "/contents/getToolsList": {
+            "get" :{
+				"tags": [
+					"Contents"
+				],
+				"summary": "getToolsList",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getToolsList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getToolsList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+
+
+
+        "/auth/register": {
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "Register User",
+				"requestBody": {
+					"description": "Register User API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/Signup"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/Signup"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/Signup"
+						}
+					}
+				}
+			}
+        },
+
+        "/media/getPrivateMediaList": {
+			"post": {
+				"tags": [
+					"Media"
+				],
+				"summary": "getPrivateMediaList ",
+				"requestBody": {
+					"description": "getPrivateMediaList API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getPrivateMediaList"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getPrivateMediaList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getPrivateMediaList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		 "/auth/addUser": {
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "add User",
+				"requestBody": {
+					"description": "addUser API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addUser"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addUser"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addUser"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		 "/contents/add": {
+			"post": {
+				"tags": [
+					"Contents"
+				],
+				"summary": "add contents",
+				"requestBody": {
+					"description": "<h1>addcontents API</h1><br><b> Sample table:</b><br><table border=1 cellpadding=10><tr><td>Poly Version</td><td>Content Type</td><td>Build Target</td></tr><tr><td>High(1) ,Low(0) </td><td> Ambience</td><td>Android, Windows, IOS, WebGL,ARKit, ARCore</td></tr></table> ",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/add"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/add"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/add"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		 "/contents/addAddressableInternal": {
+			"post": {
+				"tags": [
+					"Contents"
+				],
+				"summary": "add addAddressableInternal",
+				"requestBody": {
+					"description": "addAddressableInternal API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addAddressableInternal"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addAddressableInternal"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addAddressableInternal"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		 "/sessionmedia/add": {
+			"post": {
+				"tags": [
+					"Session Media"
+				],
+				"summary": "add session_media",
+				"requestBody": {
+					"description": "add sessionmedia API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addsessionmedia"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addsessionmedia"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addsessionmedia"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		 "/contentAccess/contentInvite": {
+			"post": {
+				"tags": [
+					"contentAccess"
+				],
+				"summary": " contentInvite",
+				"requestBody": {
+					"description": "contentInvite API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/contentInvite"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/contentInvite"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/contentInvite"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		 "/inviteeList/inviteEmail": {
+			"post": {
+				"tags": [
+					"inviteeList"
+				],
+				"summary": " inviteEmail",
+				"requestBody": {
+					"description": "inviteEmail API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/inviteEmail"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/inviteEmail"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/inviteEmail"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		"/contents/getContentData": {
+			"post": {
+				"tags": [
+					"Contents"
+				],
+				"summary": " getContentData",
+				"requestBody": {
+					"description": "getContentData API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getContentData"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getContentData"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getContentData"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		"/contents/getCatalogFiles": {
+			"post": {
+				"tags": [
+					"Contents"
+				],
+				"summary": " getCatalogFiles",
+				"requestBody": {
+					"description": "getCatalogFiles API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getCatalogFiles"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getCatalogFiles"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getCatalogFiles"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		"/contents/getContentFile": {
+			"post": {
+				"tags": [
+					"Contents"
+				],
+				"summary": " getContentFile",
+				"requestBody": {
+					"description": "getContentFile API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getContentFile"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getContentFile"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getContentFile"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		 "/auth/userUpdate": {
+			"put": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "Update User",
+				"requestBody": {
+					"description": "userUpdate  API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/userUpdate"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/userUpdate"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/userUpdate"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+        },
+		"/auth/device_login": {
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": " Device login",
+				"requestBody": {
+					"description": "devicelogin  API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/device_login"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/device_login"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/device_login"
+						}
+					}
+				}
+			}
+        },
+		"/auth/checkpassword": {
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "checkpassword ",
+				"requestBody": {
+					"description": "checkpassword  API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/checkpassword"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/checkpassword"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/checkpassword"
+						}
+					}
+				}
+			}
+        },
+		"/auth/verifypassword": {
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": " verifypassword ",
+				"requestBody": {
+					"description": "verifypassword  API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/verifypassword"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/verifypassword"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/verifypassword"
+						}
+					}
+				}
+			}
+        },
+		 "/event/updateEvent": {
+			"put": {
+				"tags": [
+					"Events"
+				],
+				"summary": "updateEvent ",
+				"requestBody": {
+					"description": " updateEvent API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/updateEvent"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/updateEvent"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/updateEvent"
+						}
+					}
+				}
+			}
+        },
+			"/auth/getUser": {
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "get User",
+				"requestBody": {
+					"description": "get User API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/GetUserList"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/GetUserList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/GetUserList"
+						}
+					}
+					
+					
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+			
+		},
+		"/compinfo/addCompany": {
+			"post": {
+				"tags": [
+					"Company Info"
+				],
+				"summary": "addCompany",
+				"requestBody": {
+					"description": "addCompany API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addCompany"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addCompany"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addCompany"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/event/addEvent": {
+			"post": {
+				"tags": [
+					"Events"
+				],
+				"summary": "addEvent",
+				"requestBody": {
+					"description": "addEvent API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addEvent"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addEvent"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addEvent"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+
+		"/compinfo/updateCompany": {
+			"put": {
+				"tags": [
+					"Company Info"
+				],
+				"summary": "updateCompany",
+				"requestBody": {
+					"description": "updateCompany API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/updateCompany"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/updateCompany"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/updateCompany"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/compinfo/deleteCompany": {
+			"post": {
+				"tags": [
+					"Company Info"
+				],
+				"summary": "deleteCompany",
+				"requestBody": {
+					"description": "deleteCompany API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/deleteCompany"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/deleteCompany"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/deleteCompany"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+			"/event/delete": {
+			"post": {
+				"tags": [
+					"Events"
+				],
+				"summary": "delete Event",
+				"requestBody": {
+					"description": "delete Event API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/delete"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/delete"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/delete"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/compinfo/getCompanyBasedList": {
+			"post": {
+				"tags": [
+					"Company Info"
+				],
+				"summary": "getCompanyBasedList",
+				"requestBody": {
+					"description": "getCompanyBasedList API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getCompanyBasedList"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getCompanyBasedList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getCompanyBasedList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+
+
+		"/auth/getUsersList":{
+			"get" : {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "Get users",
+				"parameters": [
+					{
+						"in": "query",
+						"description": "get users list",
+
+						"schema": {
+							"$ref": "#/components/schemas/getUsersList"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getUsersList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getUsersList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/auth/getuserpaginationlist":{
+			"get" : {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "Get users as paginationlist",
+				"parameters": [
+					{
+						"in": "query",
+						"description": "get getuserpaginationlist list",
+
+						"schema": {
+							"$ref": "#/components/schemas/getuserpaginationlist"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getuserpaginationlist"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getuserpaginationlist"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/auth/getCompanyUsersList":{
+			"post" : {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "Get companyList",
+				"requestBody": {
+					"description": "get companyList API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getCompanyUsersList"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getCompanyUsersList"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getCompanyUsersList"
+						}
+					}
+				}
+			}
+		},
+       "/auth/resetPassword":{
+			"post" : {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "Get email notification for reset password",
+				"requestBody": {
+					"description": " resetPassword API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/resetPassword"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/resetPassword"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/resetPassword"
+						}
+					}
+				}
+			}
+		},
+		 "/auth/changePassword":{
+			"post" : {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "changePassword",
+				"requestBody": {
+					"description": " changePassword API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/changePassword"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/changePassword"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/changePassword"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		 "/auth/deleteUser":{
+			"post" : {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "delete user",
+				"requestBody": {
+					"description": " deleteUser API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/deleteUser"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/deleteUser"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/deleteUser"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/media/deleteContentFile":{
+			"post" : {
+				"tags": [
+					"Media"
+				],
+				"summary": "deleteContentFile",
+				"requestBody": {
+					"description": " deleteContentFile API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/deleteContentFile"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/deleteContentFile"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/deleteContentFile"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		    "/auth/generatevrcode":{
+			"post" : {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "generate vrcode",
+				"requestBody": {
+					"description": " generatevrcode API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/generatevrcode"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/generatevrcode"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/generatevrcode"
+						}
+					}
+				}
+			}
+		},
+		"/auth/updatePassword":{
+			"post" : {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "updatePassword",
+				"requestBody": {
+					"description": " updatePassword API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/updatePassword"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/updatePassword"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/updatePassword"
+						}
+					}
+				}
+			}
+		},
+		"/media/addMediaAzure":{
+			"post" : {
+				"tags": [
+					"Media"
+				],
+				"summary": "addMediaAzure",
+				"requestBody": {
+					"description": " addMediaAzure API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/addMediaAzure"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/addMediaAzure"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/addMediaAzure"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/auth/vrlogin":{
+			"post" : {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "vrlogin",
+				"requestBody": {
+					"description": " vrlogin API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/vrlogin"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/vrlogin"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/vrlogin"
+						}
+					}
+				}
+			}
+		},
+	"/compinfo/getCompanyDetails":{
+			"post" : {
+				"tags": [
+					"Company Info"
+				],
+				"summary": " getCompanyDetails",
+				"requestBody": {
+					"description": "get getCompanyDetails API",
+					"required": true,
+					"content": {
+						"application/x-www-form-urlencoded": {
+							"schema": {
+								"$ref": "#/components/schemas/getCompanyDetails"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getCompanyDetails"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getCompanyDetails"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		},
+		"/compinfo/getCompanyList":{
+			"get" : {
+				"tags": [
+					"Company Info"
+				],
+				"summary": "Get getCompanyList",
+				"parameters": [
+					{
+						"in": "query",
+						"description": "get getCompanyList",
+
+						"schema": {
+							"$ref": "#/components/schemas/getCompanyList"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/components/schemas/getCompanyDetails"
+						}
+					},
+					"404": {
+						"description": "NOT FOUND",
+						"schema": {
+							"$ref": "#/components/schemas/getCompanyList"
+						}
+					}
+				},
+				"security": [
+					{
+					  "bearerAuth": []
+					}
+				  ]
+			}
+		}
+
+
+	}
+}
